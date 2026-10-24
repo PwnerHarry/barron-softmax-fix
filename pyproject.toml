@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "barron-softmax-fix"
+dynamic = ["version"]
+description = "PyTorch port of the softmax, log-softmax and cross-entropy fixes from Barron, Gnanapragasam and Tschannen (arXiv:2610.31642)."
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.10"
+dependencies = ["torch>=2.0"]
+
+[project.optional-dependencies]
+test = ["pytest"]
+
+[project.urls]
+Paper = "https://jonbarron.info/softmaxfix/"
+
+[tool.setuptools.dynamic]
+version = { attr = "barron_softmax_fix.__version__" }
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+filterwarnings = ["ignore:`torch.jit.script` is deprecated"]
+
+[tool.black]
+line-length = 120
